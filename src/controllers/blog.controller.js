@@ -1,4 +1,4 @@
-const Blog = require('../models/Blog');
+const Blog = require('../models/blog.model.js');
 
 // @desc Create a new blog
 // @route POST /api/blogs
@@ -12,11 +12,12 @@ const createBlog = async (req, res) => {
         }
 
         // Create new blog
-        const newBlog = new Blog({ title, content, author });
-        const savedBlog = await newBlog.save();
+        // const newBlog = new Blog({ title, content, author });
+        const savedBlog = await Blog.create({ title, content, author });
 
         res.status(201).json(savedBlog);
     } catch (err) {
+        console.log(err)
         res.status(500).json({ message: err.message });
     }
 };

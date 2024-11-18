@@ -3,48 +3,22 @@ const mongoose = require('mongoose')
 const config = require('../config/config') // Ensure this is correct
 const logger = require('../util/logger')
 
-let mainDbConnection
 
 const urlDB = config.DATABASE_URL
 
 const connectToDatabases = async () => {
     try {
-        mainDbConnection = mongoose.createConnection(urlDB, {
-            serverSelectionTimeoutMS: 30000
-        })
-    
+        await mongoose.connect(urlDB, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 30000, // 30 seconds
+        });
 
-        mainDbConnection.on('connected', () => logger.info('Connected to main MongoDB database'))
-        mainDbConnection.on('error', (err) => logger.error('Error connecting to main MongoDB database:', err))
-
-        await Promise.all([
-            mainDbConnection.asPromise(),
-        ])
-    } catch (err) {
-        logger.error('Error connecting to MongoDB databases:', err)
-        throw err
+        console.log('Connected to MongoDB Atlas successfully');
+    } catch (error) {
+        console.error('Error connecting to MongoDB Atlas:', error);
+        process.exit(1);
     }
-}
+};
 
-const getMainDb = () => mainDbConnection
-
-const closeConnections = async () => {
-    try {
-        await mainDbConnection.close()
-        logger.info('All MongoDB connections closed')
-    } catch (err) {
-        logger.error('Error closing MongoDB connections:', err)
-    }
-}
-
-connectToDatabases().catch((err) => {
-    logger.error('Failed to initialize database connections:', err)
-    process.exit(1)
-})
-
-module.exports = {
-    connectToDatabases,
-    getMainDb,
-    closeConnections
-}
-
+module.exports = connectToDatabases;
