@@ -27,6 +27,8 @@ app.use(limiter)
 
 // API ENtry Point
 // app.use('/api/v1', router)
+const blogRoutes = require('./routes/blog.route.js');
+app.use('/api/v1/blogs', blogRoutes);
 
 // 404 Handler
 app.use((req, _, next) => {
