@@ -6,7 +6,7 @@ const {
     getBlogById,
     updateBlog,
     deleteBlog,
-} = require('../controllers/blog.controller.js');
+} = require('../controllers/blogController.js');
 
 // Route to create a new blog
 router.post('/', createBlog);
