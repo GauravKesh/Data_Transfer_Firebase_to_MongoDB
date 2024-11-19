@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {getMainDb}= require('../database/db.js')
 
 const BlogSchema = new mongoose.Schema({
     title: {
@@ -13,6 +14,10 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    blogId:{
+        type:String,
+        unique:true
+    }
 });
 
-module.exports = mongoose.model('Blog', BlogSchema);
+module.exports = getMainDb().model('Blog', BlogSchema);

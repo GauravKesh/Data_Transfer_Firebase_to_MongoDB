@@ -2,7 +2,7 @@ const configData = require('./config/config') // Import config data
 const http = require('http')
 const app = require('./app')
 const {logger} = require("./util/logger")
-const  connectToDatabases  = require('./database/db')
+const { connectToDatabases } = require('./database/db')
 const server = http.createServer(app)
 
 
