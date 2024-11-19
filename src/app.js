@@ -2,9 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const app = express()
+const router = require('./api/router/firebaseRoutes')
 const { limiter } = require('./util/apiRateLimit')
 const allowedOrigins = ['http://localhost:3000']
-
 const corsOptions = {
     origin: function (origin, callback) {
         // Check if the incoming origin is in the list of allowed origins
@@ -26,7 +26,7 @@ app.use(limiter)
 
 
 // API ENtry Point
-// app.use('/api/v1', router)
+app.use('/api/v1', router)
 
 // 404 Handler
 app.use((req, _, next) => {
