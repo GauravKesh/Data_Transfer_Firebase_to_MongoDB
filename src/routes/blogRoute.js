@@ -9,18 +9,18 @@ const {
 } = require('../controllers/blogController.js');
 
 // Route to create a new blog
-router.post('/', createBlog);
+router.post('/add', createBlog);
 
 // Route to get all blogs
-router.get('/', getAllBlogs);
+router.get('/getall', getAllBlogs);
 
 // Route to get a single blog by ID
-router.get('/:id', getBlogById);
+router.get('/get/:id', getBlogById);
 
 // Route to update a blog
-router.put('/:id', updateBlog);
+router.put('/update/:id', updateBlog);
 
 // Route to delete a blog
-router.delete('/:id', deleteBlog);
+router.delete('/delete/:id', deleteBlog);
 
 module.exports = router;

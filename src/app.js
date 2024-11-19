@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const app = express()
+const blogRoutes = require('./routes/blogRoute.js');
 const { limiter } = require('./util/apiRateLimit')
 const allowedOrigins = ['http://localhost:3000']
 
@@ -27,8 +28,7 @@ app.use(limiter)
 
 // API ENtry Point
 // app.use('/api/v1', router)
-const blogRoutes = require('./routes/blogRoute.js');
-app.use('/api/v1/blogs', blogRoutes);
+app.use('/api/v1/mongodb/blogs', blogRoutes);
 
 // 404 Handler
 app.use((req, _, next) => {
