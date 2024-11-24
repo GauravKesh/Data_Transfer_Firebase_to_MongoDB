@@ -12,6 +12,7 @@ const {
   fireBaseAddData,
   fireBaseUpdateData,
   fireBaseDeleteData,
+  fireBaseGetSpecificData,
 } = require("../controller/firebaseControllers");
 
 /* Routes for data manipulation in mongoDB */
@@ -27,8 +28,9 @@ router.delete("/mongodb/delete/:id", deleteBlog);
 /* Routes for data manipulation in Firebase */
 
 router.get("/firebase/get/data", fireBaseGetData);
+router.get("/firebase/get/data/:id", fireBaseGetSpecificData);
 router.post("/firebase/add/data", fireBaseAddData);
-router.post("/firebase/update/:id", fireBaseUpdateData);
+router.put("/firebase/update/:id", fireBaseUpdateData);
 router.delete("/firebase/delete/:id", fireBaseDeleteData);
 
 module.exports = router;

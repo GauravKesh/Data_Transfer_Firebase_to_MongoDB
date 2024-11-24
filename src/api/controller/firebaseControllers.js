@@ -4,8 +4,10 @@ const {
   addDoc,
   setDoc,
   getDocs,
+  getDoc,
   updateDoc,
   deleteDoc,
+  deleteDocs,
 } = require("firebase/firestore");
 const db = require("../../database/firebase");
 
@@ -56,6 +58,31 @@ exports.fireBaseGetData = async (req, res) => {
   }
 };
 
+
+// To get specific data from Firebase
+exports.fireBaseGetSpecificData = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const blogRef = doc(db, "blogs", id);  
+    const getData = await getDoc(blogRef); 
+    if (!getData.exists()) {
+      return res.status(404).json({ error: "No data found" });
+    }
+
+    const blog = {
+      id: getData.id,
+      ...getData.data(),
+    };
+
+    res.status(200).json(blog);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Error fetching data" });
+  }
+};
+
+
+
 //To update data in firebase
 
 exports.fireBaseUpdateData = async (req, res) => {
@@ -84,3 +111,7 @@ exports.fireBaseDeleteData = async (req, res) => {
     res.status(500).json({ error: "Error deleting data" });
   }
 };
+
+
+
+
