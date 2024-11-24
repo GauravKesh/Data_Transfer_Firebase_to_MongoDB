@@ -15,7 +15,7 @@ const createBlog = async (req, res) => {
         // const newBlog = new Blog({ title, content, author });
         const savedBlog = await Blog.create({ title, content, author });
 
-        res.status(201).json(savedBlog);
+        res.status(201).json({message:"Data added successfully!",savedBlog});
     } catch (err) {
         console.log(err)
         res.status(500).json({ message: err.message });
@@ -27,7 +27,7 @@ const createBlog = async (req, res) => {
 const getAllBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find();
-        res.status(200).json(blogs);
+        res.status(200).json({message:"Data retrived successfully!",blogs});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -43,7 +43,7 @@ const getBlogById = async (req, res) => {
             return res.status(404).json({ message: 'Blog not found.' });
         }
 
-        res.status(200).json(blog);
+        res.status(200).json({message:"Data retrived successfully!",data:blog});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -70,7 +70,7 @@ const updateBlog = async (req, res) => {
             return res.status(404).json({ message: 'Blog not found.' });
         }
 
-        res.status(200).json(updatedBlog);
+        res.status(200).json({message:"Data updated successfully!",data:updatedBlog});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
