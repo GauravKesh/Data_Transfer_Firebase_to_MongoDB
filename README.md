@@ -95,7 +95,7 @@ npm start
   - Demonstrates testing of:
     - Adding data to Firebase (`POST /api/v1/blogs/firebase/add/data`)
     - Getting data from Firebase (`GET /api/v1/blogs/firebase/get/data`)
-    - Updating data in Firebase (`POST /api/v1/blogs/firebase/update/data`)
+    - Updating data in Firebase (`PUT /api/v1/blogs/firebase/update/data`)
     - Deleting data in Firebase (`POST /api/v1/blogs/firebase/delete/data`)
 
 ### MongoDB API Testing
