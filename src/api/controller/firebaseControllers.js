@@ -3,6 +3,7 @@ const {
   doc,
   addDoc,
   setDoc,
+  deleteDoc,
   getDocs,
 } = require("firebase/firestore");
 const db = require("../../database/firebase");
@@ -71,5 +72,25 @@ exports.fireBaseUpdateData = async (req, res) => {
   } catch (error) {
     console.error("Error updating data:", error);
     res.status(500).json({ error: "Error updating data" });
+  }
+};
+
+
+// To delete data from Firebase
+exports.fireBaseDeleteData = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+
+    if (!blogId) {
+      return res.status(400).json({ error: "Document ID is required." });
+    }
+
+    const blogDocRef = doc(db, "blogs", blogId);
+    await deleteDoc(blogDocRef);
+
+    res.status(200).json({ message: "Data deleted successfully!" });
+  } catch (error) {
+    console.error("Error deleting data:", error);
+    res.status(500).json({ error: "Error deleting data" });
   }
 };
