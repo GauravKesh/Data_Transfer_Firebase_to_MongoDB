@@ -165,8 +165,8 @@ src/
 - `server.js`: Server initialization and database connection
 - `database/db.js`: MongoDB connection configuration
 - `database/firebase.js`: Firebase initialization
-- `controllers/blogController.js`: MongoDB CRUD operations
-- `controllers/firebaseControllers.js`: Firebase operations
+- `api/controller/blogController.js`: MongoDB CRUD operations
+- `api/controller/firebaseControllers.js`: Firebase operations
 - `models/blogModel.js`: MongoDB schema definition
 - `util/logger.js`: Winston logger configuration
 - `util/apiRateLimit.js`: Rate limiting configuration
