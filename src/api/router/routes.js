@@ -28,7 +28,7 @@ router.delete("/mongodb/delete/:id", deleteBlog);
 
 router.get("/firebase/get/data", fireBaseGetData);
 router.post("/firebase/add/data", fireBaseAddData);
-router.post("/firebase/update/:id", fireBaseUpdateData);
+router.put("/firebase/update/:id", fireBaseUpdateData);
 router.delete("/firebase/delete/:id", fireBaseDeleteData);
 
 module.exports = router;
