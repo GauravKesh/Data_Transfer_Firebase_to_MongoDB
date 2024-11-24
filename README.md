@@ -85,11 +85,66 @@ npm start
 - `DELETE /api/v1/mongodb/blogs/delete/:id` - Delete blog
   ![Delete Blog](docs/screenshots/mongodb/delete.png)
 
+## API Testing Videos
+
+### Firebase API Testing
+- [View Firebase API Testing Video](docs/videos/firebase.mp4)
+  - Demonstrates testing of:
+    - Adding data to Firebase (`POST /api/v1/blogs/firebase/add/data`)
+    - Getting data from Firebase (`GET /api/v1/blogs/firebase/get/data`)
+    - Updating data in Firebase (`POST /api/v1/blogs/firebase/update/data`)
+    - Deleting data in Firebase (`POST /api/v1/blogs/firebase/delete/data`)
+
+### MongoDB API Testing
+- [View MongoDB API Testing Video](docs/videos/mongodb.mp4)
+  - Demonstrates testing of:
+    - Creating a new blog (`POST /api/v1/mongodb/blogs/add`)
+    - Getting all blogs (`GET /api/v1/mongodb/blogs/get/all`)
+    - Getting blog by ID (`GET /api/v1/mongodb/blogs/get/:id`)
+    - Updating blog (`PUT /api/v1/mongodb/blogs/update/:id`)
+    - Deleting blog (`DELETE /api/v1/mongodb/blogs/delete/:id`)
+
 
 ## Contributors
-- **Rohit**: MongoDB API development
-- **Ayush Kathri**: Main API for data transfer implementation
-- **GauravKesh**: Firebase API development
+
+### Rohit M (Backend Lead)
+- **MongoDB Integration & Development**
+  - Designed and implemented complete MongoDB CRUD API architecture
+  - Developed and tested MongoDB controllers and routes
+  - Implemented data validation and error handling for MongoDB operations
+  - Created comprehensive API documentation for MongoDB endpoints
+  
+- **Testing & Quality Assurance**
+  - Created extensive test cases for MongoDB APIs
+  - Performed thorough API testing using Postman
+  - Documented API responses and error scenarios
+  - Set up integration testing environment
+
+### Gaurav Kesh Roushan (Firebase Lead)
+- **Firebase Integration & Configuration**
+  - Configured and initialized Firebase SDK and Firebase Admin SDK
+  - Set up Firebase security rules and authentication
+  - Implemented Firebase database connection and error handling
+  - Developed Firebase CRUD operation controllers
+
+- **Project Architecture & Management**
+  - Established project structure and file organization
+  - Managed Git workflow and branch strategy
+  - Set up development environment configurations
+  - Implemented logging and monitoring systems
+
+### Ayush Kathri (Integration Specialist)
+- **Documentation & Testing Support**
+  - Created comprehensive API documentation
+  - Set up Postman collections for API testing
+  - Assisted in debugging and error resolution
+  - Maintained testing documentation
+
+- **Integration & Support**
+  - Provided technical support for API implementations
+  - Assisted in error handling and bug fixes
+  - Contributed to code review and optimization
+
 
 ## File Structure
 ```
@@ -120,10 +175,13 @@ src/
 All required dependencies are listed in `package.json`:
 - express
 - mongoose
-- firebase/firebase-admin
+- firebase
+- firebase-admin
 - winston
 - cors
+- cors-env
 - helmet
+- dotenv
 - dotenv-flow
 - express-rate-limit
-- and more...
+- nodemon
