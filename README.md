@@ -1,4 +1,3 @@
-```markdown
 # Firestore to MongoDB Data Transfer Application
 
 ## Index
@@ -112,4 +111,3 @@ All required dependencies are listed in `package.json`:
 - dotenv-flow
 - express-rate-limit
 - and more...
-```
