@@ -4,34 +4,27 @@ const {
   addDoc,
   setDoc,
   getDocs,
+  updateDoc,
+  deleteDoc,
 } = require("firebase/firestore");
 const db = require("../../database/firebase");
 
 //To add data in firebase
 exports.fireBaseAddData = async (req, res) => {
   try {
-    const { blogId, data } = req.body;
+    const { data } = req.body;
 
     if (!data) {
       return res.status(400).json({ error: "Data is required." });
     }
-    if (blogId) {
-      const blogDocRef = doc(db, "blogs", blogId);
-      await setDoc(blogDocRef, data);
 
-      return res.status(200).json({
-        message: "Data added successfully!",
-        documentId: blogId,
-      });
-    } else {
-      const blogsRef = collection(db, "blogs");
-      const docRef = await addDoc(blogsRef, data);
+    const blogsRef = collection(db, "blogs");
+    const docRef = await addDoc(blogsRef, data);
 
-      return res.status(200).json({
-        message: "Data added successfully!",
-        documentId: docRef.id,
-      });
-    }
+    return res.status(200).json({
+      message: "Data added successfully!",
+      documentId: docRef.id,
+    });
   } catch (error) {
     console.error("Error adding data:", error);
     res.status(500).json({
@@ -51,7 +44,11 @@ exports.fireBaseGetData = async (req, res) => {
       return res.status(404).json({ error: "No data found" });
     }
 
-    const blogs = getData.docs.map((doc) => doc.data());
+    const blogs = getData.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
     res.status(200).json(blogs);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -71,5 +68,19 @@ exports.fireBaseUpdateData = async (req, res) => {
   } catch (error) {
     console.error("Error updating data:", error);
     res.status(500).json({ error: "Error updating data" });
+  }
+};
+
+//To delete data in firebase
+
+exports.fireBaseDeleteData = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blogDocRef = doc(db, "blogs", blogId);
+    await deleteDoc(blogDocRef);
+    res.status(200).json({ message: "Data deleted successfully!" });
+  } catch (error) {
+    console.error("Error deleting data:", error);
+    res.status(500).json({ error: "Error deleting data" });
   }
 };
