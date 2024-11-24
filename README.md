@@ -30,6 +30,9 @@ This application provides a backend service to transfer data between Firebase/Fi
 
 ### Steps to Run
 1. Clone the repository
+```bash
+git clone https://github.com/GauravKesh/Data_Transfer_Firebase_to_MongoDB.git
+```
 2. Install dependencies:
 ```bash
 npm install
