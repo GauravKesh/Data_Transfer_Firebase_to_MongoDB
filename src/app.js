@@ -28,7 +28,7 @@ app.use(limiter)
 
 // API ENtry Point
 app.use('/api/v1/blogs', router)
-app.use('/api/v1/mongodb/blogs', blogRoutes);
+app.use('/api/v1/blogs/mongodb', blogRoutes);
 
 // 404 Handler
 app.use((req, _, next) => {
