@@ -47,4 +47,3 @@ module.exports = {
     getMainDb,
     closeConnections
 }
-
