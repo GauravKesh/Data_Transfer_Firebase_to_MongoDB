@@ -36,7 +36,7 @@ npm install
 ```
 3. Create a `.env` file with the following variables:
 ```env
-PORT=3000
+PORT=8080
 DATABASE_URL=your_mongodb_url
 FIREBASE_API_KEY=your_firebase_api_key
 FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
@@ -58,15 +58,33 @@ npm start
 
 ### Firebase Operations
 - `POST /api/v1/blogs/firebase/add/data` - Add data to Firebase
+  ![Add Data to Firebase](docs/screenshots/firebase/add.png)
+
 - `GET /api/v1/blogs/firebase/get/data` - Get data from Firebase
+  ![Get Data from Firebase](docs/screenshots/firebase/get.png)
+
 - `POST /api/v1/blogs/firebase/update/data` - Update data in Firebase
+  ![Update Data in Firebase](docs/screenshots/firebase/update.png)
+
+- `POST /api/v1/blogs/firebase/delete/data` - Delete data in Firebase
+  ![Update Data in Firebase](docs/screenshots/firebase/delete.png)
 
 ### MongoDB Operations
 - `POST /api/v1/mongodb/blogs/add` - Create a new blog
-- `GET /api/v1/mongodb/blogs/getall` - Get all blogs
+  ![Create Blog](docs/screenshots/mongodb/add.png)
+
+- `GET /api/v1/mongodb/blogs/get/all` - Get all blogs
+  ![Get All Blogs](docs/screenshots/mongodb/getall.png)
+
 - `GET /api/v1/mongodb/blogs/get/:id` - Get blog by ID
+  ![Get Blog by ID](docs/screenshots/mongodb/getbyid.png)
+
 - `PUT /api/v1/mongodb/blogs/update/:id` - Update blog
+  ![Update Blog](docs/screenshots/mongodb/update.png)
+
 - `DELETE /api/v1/mongodb/blogs/delete/:id` - Delete blog
+  ![Delete Blog](docs/screenshots/mongodb/delete.png)
+
 
 ## Contributors
 - **Rohit**: MongoDB API development
@@ -80,10 +98,8 @@ src/
 │   ├── controller/
 │   └── router/
 ├── config/
-├── controllers/
 ├── database/
 ├── models/
-├── routes/
 ├── util/
 ├── app.js
 └── server.js
