@@ -1,4 +1,5 @@
-const { initializeApp }  = require( "firebase/app");
+const { initializeApp } = require("firebase/app");
+const { getFirestore } = require("firebase/firestore");
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0HJ7OhRTXuuGk_d4yWRfSC2TcczoT7Nc",
@@ -11,8 +12,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-if(app){
-    console.log("FireBase is Connected");
-}
+console.log("Firebase is Connected");
 
-module.exports = app;
+// Initialize Firestore
+const db = getFirestore(app);
+
+module.exports = db;

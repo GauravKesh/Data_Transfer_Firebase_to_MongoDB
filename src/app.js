@@ -26,14 +26,16 @@ app.use(limiter)
 
 
 // API ENtry Point
-app.use('/api/v1', router)
+app.use('/api/v1/blogs', router)
 
 // 404 Handler
 app.use((req, _, next) => {
     try {
-        throw new Error();
+        console.log('Working..');
     } catch (err) {
-        httpError(next, err, req, 404)
+       console.log(err);
+    }finally{
+        next();
     }
 })
 
