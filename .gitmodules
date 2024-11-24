@@ -1,0 +1,3 @@
+[submodule "plentraFrontend"]
+	path = plentraFrontend
+	url = https://github.com/ayush362/Firebase_mongo_frontend
