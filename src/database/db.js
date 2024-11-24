@@ -1,7 +1,7 @@
 // src/config/db.js
 const mongoose = require('mongoose')
 const config = require('../config/config') // Ensure this is correct
-const logger = require('../util/logger')
+// const logger = require('../util/logger')
 
 let mainDbConnection
 
@@ -14,8 +14,8 @@ const connectToDatabases = async () => {
         })
     
 
-        mainDbConnection.on('connected', () => logger.info('Connected to main MongoDB database'))
-        mainDbConnection.on('error', (err) => logger.error('Error connecting to main MongoDB database:', err))
+        mainDbConnection.on('connected', () => console.log('Connected to main MongoDB database'))
+        mainDbConnection.on('error', (err) => console.log('Error connecting to main MongoDB database:', err))
 
         await Promise.all([
             mainDbConnection.asPromise(),
